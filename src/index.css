@@ -1,60 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
 
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
 
-  ::-webkit-scrollbar-track {
-    background: #0a0e17;
-  }
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 
-  ::-webkit-scrollbar-thumb {
-    background: #1e293b;
-    border-radius: 3px;
-  }
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: #334155;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
 
-  /* Code block scrollbar */
-  pre::-webkit-scrollbar {
-    height: 4px;
-  }
+/* Selection */
+::selection {
+  background-color: rgba(249, 115, 22, 0.2);
+  color: inherit;
+}
 
-  pre::-webkit-scrollbar-track {
-    background: transparent;
-  }
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
 
-  pre::-webkit-scrollbar-thumb {
-    background: #334155;
-    border-radius: 2px;
-  }
+/* Code block horizontal scroll */
+pre {
+  scrollbar-width: thin;
+  scrollbar-color: #475569 transparent;
+}
 
-  /* Details animation */
-  details summary {
-    list-style: none;
-  }
+pre::-webkit-scrollbar {
+  height: 4px;
+}
 
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-
-  /* Selection color */
-  ::selection {
-    background: rgba(249, 115, 22, 0.3);
-    color: white;
-  }
+pre::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 999px;
 }
