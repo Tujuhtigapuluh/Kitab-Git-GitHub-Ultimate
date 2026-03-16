@@ -76,17 +76,28 @@ Ini adalah cara paling modern dan direkomendasikan langsung oleh GitHub. Setiap 
 Langkah 1: Wajib Atur base di Vite
 * Buka file vite.config.ts. Pastikan Anda menambahkan baris base yang berisi nama repositori GitHub Anda.
 ```bash
-{} TypeScript
 
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import path from "path";
+import { fileURLToPath } from "url";
+import tailwindcss from "@tailwindcss/vite";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import { viteSingleFile } from "vite-plugin-singlefile";
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// https://vite.dev/config/
 export default defineConfig({
-  // WAJIB: Ganti dengan nama repositori Anda! 
-  // Contoh jika link repo: github.com/budi/kitab-git -> base: '/kitab-git/'
-  base: '/nama-repo-kamu/', 
-  plugins: [react()],
-})
+  base: './', // Menghindari masalah blank putih di GitHub Pages
+  plugins: [react(), tailwindcss(), viteSingleFile()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+    },
+  },
+});
+
 ```
 
 ---
@@ -97,28 +108,25 @@ Di dalam folder proyek Anda, buat folder baru bernama .github, lalu di dalamnya 
 
 Copy & paste kode ini ke dalam deploy.yml:
 ```bash
-{} YAML
+name: Deploy to GitHub Pages
 
-# Nama aksi yang akan muncul di tab "Actions" GitHub
-name: Deploy Web ke GitHub Pages
-
-# Kapan aksi ini dijalankan? (Setiap ada push ke branch 'main')
 on:
   push:
-    branches: ['main']
+    branches:
+      - main
+      - master
 
-# Pengaturan Izin (Wajib untuk GitHub Pages)
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Mencegah penumpukan proses deploy jika push berkali-kali dengan cepat
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
-# Langkah-langkah kerja robot GitHub
 jobs:
   deploy:
     environment:
@@ -126,30 +134,33 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Mengambil kode (Checkout)
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: ⚙️ Setup Node.js
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # Menggunakan versi Node.js LTS
+          node-version: 20
           cache: 'npm'
 
-      - name: 📦 Install Dependencies
-        run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-      - name: 🛠️ Build Aplikasi Web
-        run: npm run build
+      - name: Build project
+        # BAGIAN PENTING: Menambahkan --base=/nama-repo/ agar build Vite tidak menyebabkan blank screen (white screen) di GitHub Pages.
+        run: npx tsc -b && npx vite build --base=/${{ github.event.repository.name }}/
 
-      - name: ⚙️ Setup GitHub Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v4
+        with:
+          enablement: true
 
-      - name: 📤 Upload Hasil Build (Folder dist)
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Folder ini otomatis dibuat oleh Vite setelah build
+          path: './dist'
 
-      - name: 🚀 Publish ke GitHub Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 ```
