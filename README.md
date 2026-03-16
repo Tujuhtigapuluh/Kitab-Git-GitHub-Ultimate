@@ -75,7 +75,7 @@ Ini adalah cara paling modern dan direkomendasikan langsung oleh GitHub. Setiap 
 
 Langkah 1: Wajib Atur base di Vite
 * Buka 📄 file vite.config.ts. 
-  * Copy seluruh kode di bawah, Paste ke **file vite.config.ts** di proyek Anda.
+  * Copy & paste kode ini ke dalam 📄 file vite.config.ts.
 ```bash
 
 import path from "path";
@@ -105,7 +105,7 @@ export default defineConfig({
 Langkah 2: Buat File deploy.yml (Jantung Otomatisasinya)
 
 Di dalam folder proyek Anda, buat folder baru bernama .github, lalu di dalamnya buat folder workflows. Di dalam folder workflows tersebut, buat file 📄 deploy.yml.
-**(Struktur foldernya:  📂nama-folder-project/╰┈➤📂.github/╰┈➤📂workflows/╰┈➤📄deploy.yml).**
+**(Struktur foldernya: 📂nama-folder-project/📂.github/📂workflows/📄deploy.yml).**
 
 Copy & paste kode ini ke dalam deploy.yml:
 ```bash
