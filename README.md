@@ -164,6 +164,67 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 ```
+# 📂 Struktur Proyek Vite + React
+
+Dokumentasi ini menjelaskan susunan direktori dan file penting dalam proyek, mulai dari konfigurasi GitHub Actions hingga file utama `vite.config.ts`.
+
+## Struktur Direktori
+
+.
+├── 📂 .github/
+│   └── 📂 workflows/
+│       └── 📄 deploy.yml        # Workflow GitHub Actions untuk build & deploy ke GitHub Pages
+│
+├── 📂 public/                   # File statis (favicon, manifest, dll.)
+│   └── 📄 favicon.ico
+│
+├── 📂 src/                      # Source code utama aplikasi
+│   ├── 📂 assets/               # Gambar, ikon, font, dll.
+│   ├── 📂 components/           # Komponen React reusable
+│   ├── 📂 pages/                # Halaman utama aplikasi
+│   ├── 📄 App.tsx               # Root komponen React
+│   └── 📄 main.tsx              # Entry point aplikasi
+│
+├── 📄 .gitignore                # File/folder yang diabaikan Git
+├── 📄 index.html                # Template HTML utama
+├── 📄 package.json              # Konfigurasi npm, dependencies, scripts
+├── 📄 tsconfig.json             # Konfigurasi TypeScript
+├── 📄 vite.config.ts            # Konfigurasi Vite (build, plugin, alias)
+└── 📄 README.md                 # Dokumentasi proyek
+
+
+## Penjelasan File Penting
+
+- **`.github/workflows/deploy.yml`**  
+  Berisi instruksi otomatisasi CI/CD untuk build dan deploy ke GitHub Pages.
+
+- **`src/main.tsx`**  
+  Entry point aplikasi, tempat React di-mount ke DOM.
+
+- **`src/App.tsx`**  
+  Komponen root yang mengatur routing atau layout utama.
+
+- **`vite.config.ts`**  
+  Konfigurasi Vite, termasuk plugin (misalnya React plugin), alias path, dan pengaturan build.
+
+- **`package.json`**  
+  Menyimpan dependencies, script build/deploy, serta metadata proyek.
+
+---
+
+## 🚀 Alur Build & Deploy
+
+1. **Push ke branch utama** → GitHub Actions (`deploy.yml`) akan otomatis berjalan.  
+2. **Build dengan Vite** → Output tersimpan di folder `dist/`.  
+3. **Deploy ke GitHub Pages** → File hasil build dipublikasikan.  
+
+---
+
+## 📌 Catatan
+- Pastikan `vite.config.ts` sudah mengatur `base` sesuai dengan nama repo GitHub Pages.  
+- Struktur ini bisa disesuaikan sesuai kebutuhan proyek (misalnya menambah `hooks/`, `context/`, atau `services/`).  
+
+
 ---
 
 Langkah 3: Ubah Pengaturan di GitHub (Sangat Penting!)
