@@ -74,7 +74,8 @@ Mari kita selesaikan masalah ini secara permanen di langkah selanjutnya!
 Ini adalah cara paling modern dan direkomendasikan langsung oleh GitHub. Setiap kali Anda melakukan git push, GitHub akan otomatis mem-build dan mem-publish web Anda ke GitHub Pages di belakang layar.
 
 Langkah 1: Wajib Atur base di Vite
-* Buka file vite.config.ts. Pastikan Anda menambahkan baris base yang berisi nama repositori GitHub Anda.
+* Buka 📄 file vite.config.ts. 
+  * Copy seluruh kode di bawah, Paste ke **file vite.config.ts** di proyek Anda.
 ```bash
 
 import path from "path";
@@ -103,8 +104,8 @@ export default defineConfig({
 ---
 Langkah 2: Buat File deploy.yml (Jantung Otomatisasinya)
 
-Di dalam folder proyek Anda, buat folder baru bernama .github, lalu di dalamnya buat folder workflows. Di dalam folder workflows tersebut, buat file deploy.yml.
-(Struktur foldernya: proyek-anda/.github/workflows/deploy.yml).
+Di dalam folder proyek Anda, buat folder baru bernama .github, lalu di dalamnya buat folder workflows. Di dalam folder workflows tersebut, buat file 📄 deploy.yml.
+**(Struktur foldernya:  📂nama-folder-project/╰┈➤📂.github/╰┈➤📂workflows/╰┈➤📄deploy.yml).**
 
 Copy & paste kode ini ke dalam deploy.yml:
 ```bash
@@ -340,7 +341,18 @@ npm run dev
 6. Buka di Browser: Buka alamat http://localhost:5173/ yang muncul di terminal Anda.
    
 ---
+
+## ☕ Dukung Proyek Ini
+
+Jika Anda merasa terbantu dengan proyek ini dan ingin mendukung pengembangan lebih lanjut, silakan berdonasi untuk sekadar traktir kopi:
+
+**Dana:** 089528685141
+
+Terima kasih atas dukungan Anda 🙌
+
+---
+
 *💡 Dibuat dari Developer, oleh Developer, untuk Developer.
 Mari jadikan error sebagai teman belajar, bukan halangan! Happy Coding! ☕💻*
 
-## Bintang Toba
+## Tiktok: Bintang Toba
