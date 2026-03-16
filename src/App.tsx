@@ -841,7 +841,7 @@ $ git commit -m "update: mengubah tampilan halaman utama"`}</CodeBlock>
           <p className="text-slate-400 text-sm mb-3">Setiap kali Anda selesai mengedit file di lokal, jalankan 4 perintah ini secara berurutan:</p>
           <CodeBlock>{`$ git pull origin main
 $ git add .
-$ git commit -m "pesan perubahan Anda"
+$ git commit -m "first commit"
 $ git push origin main`}</CodeBlock>
           <p className="text-slate-400 text-xs mt-2">Hafal urutan ini: <strong>PULL → ADD → COMMIT → PUSH</strong>. Itu saja!</p>
         </div>
