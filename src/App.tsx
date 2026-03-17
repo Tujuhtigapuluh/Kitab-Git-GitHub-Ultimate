@@ -1804,7 +1804,7 @@ $ git push -f https://github.com/username/nama-repo.git main:gh-pages
         <InfoBox type="tip" title="💡 Tips Penting">
           <ul className="list-disc list-inside space-y-1">
             <li>Selalu gunakan <code>base: './'</code> di <code>vite.config.ts</code> untuk project GitHub Pages</li>
-            <li>Di GitHub Actions, gunakan <code>--base=/\${{ github.event.repository.name }}/</code> saat build</li>
+            <li>Di GitHub Actions, gunakan <code>--base=/${'{'}{'{'} github.event.repository.name {'}'}{'}'}/</code> saat build</li>
             <li>Pastikan folder <code>dist</code> tidak di-ignore di <code>.gitignore</code> jika deploy manual</li>
             <li>Gunakan <code>vite-plugin-singlefile</code> jika ingin output single HTML file</li>
           </ul>
