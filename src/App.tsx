@@ -1572,9 +1572,9 @@ $ git remote set-url origin git@github.com:username/nama-repo.git`}</CodeBlock>
         <div className="border rounded-lg p-4 bg-white">
           <p className="font-bold text-gray-800 mb-3">📂 Struktur Proyek React/Vite:</p>
           <CodeBlock>{`📂 nama-folder-project/
-├── 📂 .github/
-│   └── 📂 workflows/
-│       └── 📄 deploy.yml        # Workflow GitHub Actions untuk build & deploy
+├── 📂 .github/👈
+│   └── 📂 workflows/👈
+│       └── 📄 deploy.yml👈      # Workflow GitHub Actions untuk build & deploy
 ├── 📂 public/                   # File statis (favicon, manifest, dll.)
 ├── 📂 src/                      # Source code utama aplikasi
 │   ├── 📂 assets/               # Gambar, ikon, font, dll.
@@ -1587,7 +1587,7 @@ $ git remote set-url origin git@github.com:username/nama-repo.git`}</CodeBlock>
 ├── 📄 index.html                # Template HTML utama
 ├── 📄 package.json              # Konfigurasi npm, dependencies, scripts
 ├── 📄 tsconfig.json             # Konfigurasi TypeScript
-├── 📄 vite.config.ts            # Konfigurasi Vite (build, plugin, alias)
+├── 📄 vite.config.ts👈          # Konfigurasi Vite (build, plugin, alias)
 └── 📄 README.md                 # Dokumentasi proyek`}</CodeBlock>
         </div>
 
@@ -1609,7 +1609,7 @@ const __dirname = path.dirname(__filename);
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './', // ← WAJIB! Menghindari masalah blank putih di GitHub Pages
+  base: './', // ← WAJIB! Menghindari masalah blank putih di GitHub Pages👈
   plugins: [react(), tailwindcss(), viteSingleFile()],
   resolve: {
     alias: {
